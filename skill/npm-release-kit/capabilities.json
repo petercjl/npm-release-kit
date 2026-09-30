@@ -1,0 +1,23 @@
+{
+  "schema": "portable-skill-capabilities",
+  "schema_version": "1.0.0",
+  "skill": "npm-release-kit",
+  "target_platforms": ["codex", "sealseek"],
+  "capabilities": [
+    {
+      "id": "command.execute",
+      "purpose": "Run the stable npm-release-kit CLI and receive structured results.",
+      "required": true,
+      "required_features": ["argv", "cwd", "exit_code", "stdout", "stderr"],
+      "input_fields": ["command", "args", "cwd"],
+      "output_fields": ["exit_code", "stdout", "stderr"],
+      "side_effects": {
+        "external_mutation": true,
+        "may_cost_money": false,
+        "authorization": "Explicit setup, trust configuration, or publication request plus the CLI confirmation gate"
+      },
+      "authorization_boundary": "Setup, trust configuration, and publication require explicit user intent and CLI confirmation.",
+      "errors": ["CAPABILITY_UNAVAILABLE", "AUTH_REQUIRED", "PERMISSION_REQUIRED", "OUTPUT_CONTRACT_FAILED"]
+    }
+  ]
+}

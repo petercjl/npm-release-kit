@@ -1,0 +1,4 @@
+interface:
+  display_name: "npm Release Kit"
+  short_description: "通过 GitHub OIDC 安全发布 npm 包并免除重复验证"
+  default_prompt: "帮我检查并发布当前 npm 包。"

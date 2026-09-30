@@ -1,0 +1,21 @@
+{
+  "name": "@petercjl/npm-release-kit",
+  "version": "0.1.0",
+  "description": "Token-free npm releases through GitHub Actions trusted publishing, with portable Agent skills.",
+  "type": "module",
+  "bin": {
+    "npm-release-kit": "bin/npm-release-kit.mjs",
+    "nrk": "bin/npm-release-kit.mjs"
+  },
+  "files": ["bin", "src", "templates", "skill", "adapters", "capabilities.json", "README.md", "LICENSE"],
+  "scripts": {
+    "check": "node --check bin/npm-release-kit.mjs && node --check src/*.mjs",
+    "test": "node --test",
+    "prepack": "npm run check && npm test"
+  },
+  "engines": { "node": ">=22.14.0" },
+  "publishConfig": { "access": "public" },
+  "repository": { "type": "git", "url": "git+https://github.com/petercjl/npm-release-kit.git" },
+  "license": "MIT",
+  "keywords": ["npm", "release", "oidc", "trusted-publishing", "github-actions", "agent-skill"]
+}

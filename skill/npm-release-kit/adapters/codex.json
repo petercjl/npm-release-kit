@@ -1,0 +1,17 @@
+{
+  "schema": "portable-skill-adapter",
+  "schema_version": "1.0.0",
+  "platform": "codex",
+  "mappings": [
+    {
+      "capability_id": "command.execute",
+      "implementation": {"kind": "stable-cli", "executable": "npm-release-kit"},
+      "features": ["argv", "cwd", "exit_code", "stdout", "stderr"],
+      "status": "tested",
+      "tested_date": "2026-09-30",
+      "evidence": ["CLI syntax, tests, doctor, init dry-run, and package lifecycle commands executed on Codex/macOS."],
+      "permissions": ["Repository filesystem", "GitHub CLI authentication", "Network for GitHub and npm"],
+      "normalization": "Return the CLI exit code and separate stdout/stderr; parse JSON stdout for structured commands."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0.0",
+  "package": "@petercjl/npm-release-kit",
+  "capabilities": [
+    {"id":"release.initialize","name":"初始化免 Token 发布","description":"为 npm 包创建 GitHub Actions OIDC 发布工作流。","riskLevel":"write","commandTemplate":"npm-release-kit init --root <repo> --yes","requiredInputs":["npm 包仓库"],"delivery":"GitHub Actions workflow"},
+    {"id":"release.trust","name":"绑定 npm Trusted Publisher","description":"一次性绑定 npm 包、GitHub 仓库和发布工作流。","riskLevel":"high-impact","commandTemplate":"npm-release-kit trust setup --root <repo> --yes","requiredInputs":["已发布 npm 包","npm 维护权限"],"delivery":"npm Trusted Publisher 配置"},
+    {"id":"release.publish","name":"发布 npm 版本","description":"触发 GitHub Actions，通过 OIDC 发布 latest 或 next 版本。","riskLevel":"high-impact","commandTemplate":"npm-release-kit publish --release <type> --tag <tag> --yes","requiredInputs":["版本类型","dist-tag"],"delivery":"npm 包版本与 GitHub Release"},
+    {"id":"release.diagnose","name":"检查发布环境","description":"检查 Node、npm、GitHub CLI、仓库、工作流和包配置。","riskLevel":"read","commandTemplate":"npm-release-kit doctor --json","requiredInputs":[],"delivery":"结构化诊断结果"}
+  ]
+}
