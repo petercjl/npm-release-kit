@@ -5,9 +5,17 @@ import path from 'node:path';
 import test from 'node:test';
 import { parseArgs, run } from '../src/util.mjs';
 import { initialize } from '../src/init.mjs';
+import { releaseItArgs } from '../src/publish.mjs';
 
 test('parseArgs separates positionals and flags', () => {
   assert.deepEqual(parseArgs(['publish', '--release', 'patch', '--yes']), { positional: ['publish'], flags: { release: 'patch', yes: true } });
+});
+
+test('release-it is invoked through an explicit npx package binary', () => {
+  const args = releaseItArgs('prerelease', 'next');
+  assert.deepEqual(args.slice(0, 6), ['--yes', '--package', 'release-it@21.1.0', 'release-it', 'prerelease', '--ci']);
+  assert.ok(args.includes('--preRelease=next'));
+  assert.ok(args.includes('--npm.tag=next'));
 });
 
 async function fixture() {
