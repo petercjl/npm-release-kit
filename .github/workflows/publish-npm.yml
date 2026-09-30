@@ -42,6 +42,6 @@ jobs:
       - run: npm run check --if-present
       - run: npm test --if-present
       - name: Publish @petercjl/npm-release-kit
-        run: npx --yes @petercjl/npm-release-kit@0.1.0 ci publish --release "${{ inputs.release }}" --tag "${{ inputs.tag }}"
+        run: npx --yes --package @petercjl/npm-release-kit@0.1.1 npm-release-kit ci publish --release "${{ inputs.release }}" --tag "${{ inputs.tag }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
