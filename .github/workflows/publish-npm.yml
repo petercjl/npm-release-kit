@@ -41,6 +41,10 @@ jobs:
       - run: npm ci
       - run: npm run check --if-present
       - run: npm test --if-present
+      - name: Configure release author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Publish @petercjl/npm-release-kit
         run: node bin/npm-release-kit.mjs ci publish --release "${{ inputs.release }}" --tag "${{ inputs.tag }}"
         env:
